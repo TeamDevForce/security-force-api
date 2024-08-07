@@ -3,7 +3,7 @@ package com.devforce.securityforce.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Usuarios {
+public class Usuario {
 	
 	private long id;
 	private String nomeUsuario;
@@ -13,11 +13,11 @@ public class Usuarios {
 	private LocalDate dataCriacao;
 	private char statusAtivo;
 	
-	public Usuarios() {
+	public Usuario() {
 		
 	}
 
-	public Usuarios(long id, String nomeUsuario, String emailUsuario, String senhaUsuario, String telefone, LocalDate dataCriacao, char statusAtivo) {
+	public Usuario(long id, String nomeUsuario, String emailUsuario, String senhaUsuario, String telefone, LocalDate dataCriacao, char statusAtivo) {
 		this.id = id;
 		this.nomeUsuario = nomeUsuario;
 		this.emailUsuario = emailUsuario;
@@ -103,7 +103,7 @@ public class Usuarios {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuarios other = (Usuarios) obj;
+		Usuario other = (Usuario) obj;
 		return Objects.equals(dataCriacao, other.dataCriacao) && Objects.equals(emailUsuario, other.emailUsuario)
 				&& id == other.id && Objects.equals(nomeUsuario, other.nomeUsuario)
 				&& Objects.equals(senhaUsuario, other.senhaUsuario) && statusAtivo == other.statusAtivo

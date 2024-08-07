@@ -1,46 +1,52 @@
 package com.devforce.securityforce.model;
 
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
 public class Credencial {
 
-	private long usuarioId;
-	private String categoria;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String nome;
-	private String usuario;
+	private String usuarioCredencial;
 	private String senhaUsuario;
 	private String notas;
 	private String url;
+	@ManyToOne
+	@JoinColumn(name = "categoria_id", nullable = false)
+	private Categoria categoria;
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", nullable = false)
+	private Usuario usuario;
+	private LocalDate dataCriacao;
+
 
 	public Credencial() {
 
 	}
 
-	public Credencial(long usuarioId, String categoria, String nome, String usuario, String senhaUsuario, String notas,
-			String url) {
-		this.usuarioId = usuarioId;
-		this.categoria = categoria;
+	public Credencial(long id, String nome, String usuarioCredencial, String senhaUsuario, String notas, String url, Categoria categoria, Usuario usuario, LocalDate dataCriacao) {
+		this.id = id;
 		this.nome = nome;
-		this.usuario = usuario;
+		this.usuarioCredencial = usuarioCredencial;
 		this.senhaUsuario = senhaUsuario;
 		this.notas = notas;
 		this.url = url;
-	}
-
-	public long getUsuarioId() {
-		return usuarioId;
-	}
-
-	public void setUsuarioId(long usuarioId) {
-		this.usuarioId = usuarioId;
-	}
-
-	public String getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+		this.usuario = usuario;
+		this.dataCriacao = dataCriacao;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -51,12 +57,12 @@ public class Credencial {
 		this.nome = nome;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getUsuarioCredencial() {
+		return usuarioCredencial;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsuarioCredencial(String usuarioCredencial) {
+		this.usuarioCredencial = usuarioCredencial;
 	}
 
 	public String getSenhaUsuario() {
@@ -83,30 +89,55 @@ public class Credencial {
 		this.url = url;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(categoria, nome, notas, senhaUsuario, url, usuario, usuarioId);
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public LocalDate getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(LocalDate dataCriacao) {
+		this.dataCriacao = dataCriacao;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Credencial other = (Credencial) obj;
-		return Objects.equals(categoria, other.categoria) && Objects.equals(nome, other.nome)
-				&& Objects.equals(notas, other.notas) && Objects.equals(senhaUsuario, other.senhaUsuario)
-				&& Objects.equals(url, other.url) && Objects.equals(usuario, other.usuario)
-				&& usuarioId == other.usuarioId;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Credencial that = (Credencial) o;
+		return id == that.id;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(id);
 	}
 
 	@Override
 	public String toString() {
-		return "Credencial [usuarioId=" + usuarioId + ", categoria=" + categoria + ", nome=" + nome + ", usuario="
-				+ usuario + ", senhaUsuario=" + senhaUsuario + ", notas=" + notas + ", url=" + url + "]";
+		return "Credencial{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", usuarioCredencial='" + usuarioCredencial + '\'' +
+				", senhaUsuario='" + senhaUsuario + '\'' +
+				", notas='" + notas + '\'' +
+				", url='" + url + '\'' +
+				", categoria=" + categoria +
+				", usuario=" + usuario +
+				", dataCriacao=" + dataCriacao +
+				'}';
 	}
-
 }
