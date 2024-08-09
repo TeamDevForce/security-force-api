@@ -1,19 +1,33 @@
 package com.devforce.securityforce.model;
 
+import java.util.List;
 import java.util.Objects;
 
-public class Categoria {
+import org.springframework.data.annotation.Id;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
+
+@Entity
+public class Categoria {
+	
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-
+	@OneToMany (mappedBy = "categoria")
+	private List<Credencial> credenciais;
+	
 	public Categoria() {
 
 	}
 
-	public Categoria(Long id, String nome) {
+	public Categoria(Long id, String nome, List<Credencial> credenciais) {
 		this.id = id;
 		this.nome = nome;
+		this.credenciais = credenciais;
 	}
 
 	public Long getId() {
@@ -31,10 +45,18 @@ public class Categoria {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public List<Credencial> getCredenciais() {
+		return credenciais;
+	}
+
+	public void setCredenciais(List<Credencial> credenciais) {
+		this.credenciais = credenciais;
+	}
 
 	@Override
 	public String toString() {
-		return "Categorias [id=" + id + ", nome=" + nome + "]";
+		return "Categoria [id=" + id + ", nome=" + nome + "]";
 	}
 
 	@Override
@@ -53,5 +75,4 @@ public class Categoria {
 		Categoria other = (Categoria) obj;
 		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
 	}
-
 }
