@@ -1,23 +1,36 @@
 package com.devforce.securityforce.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
+import org.springframework.data.annotation.Id;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
+
+@Entity
 public class Usuario {
 	
-	private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String nomeUsuario;
 	private String emailUsuario;
 	private String senhaUsuario;
 	private String telefone;
 	private LocalDate dataCriacao;
 	private char statusAtivo;
+	@OneToMany(mappedBy = "usuario")
+	private List<Credencial> credenciais;
 	
 	public Usuario() {
 		
 	}
 
-	public Usuario(long id, String nomeUsuario, String emailUsuario, String senhaUsuario, String telefone, LocalDate dataCriacao, char statusAtivo) {
+	public Usuario(Long id, String nomeUsuario, String emailUsuario, String senhaUsuario, String telefone, LocalDate dataCriacao, char statusAtivo, List<Credencial> credenciais) {
 		this.id = id;
 		this.nomeUsuario = nomeUsuario;
 		this.emailUsuario = emailUsuario;
@@ -25,13 +38,14 @@ public class Usuario {
 		this.telefone = telefone;
 		this.dataCriacao = dataCriacao;
 		this.statusAtivo = statusAtivo;
+		this.credenciais = credenciais;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -83,16 +97,25 @@ public class Usuario {
 		this.statusAtivo = statusAtivo;
 	}
 
+	public List<Credencial> getCredenciais() {
+		return credenciais;
+	}
+
+	public void setCredenciais(List<Credencial> credenciais) {
+		this.credenciais = credenciais;
+	}
+
 	@Override
 	public String toString() {
-		return "Usuarios [id=" + id + ", nomeUsuario=" + nomeUsuario + ", emailUsuario=" + emailUsuario
+		return "Usuario [id=" + id + ", nomeUsuario=" + nomeUsuario + ", emailUsuario=" + emailUsuario
 				+ ", senhaUsuario=" + senhaUsuario + ", telefone=" + telefone + ", dataCriacao=" + dataCriacao
-				+ ", statusAtivo=" + statusAtivo + "]";
+				+ ", statusAtivo=" + statusAtivo + ", credenciais=" + credenciais + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(dataCriacao, emailUsuario, id, nomeUsuario, senhaUsuario, statusAtivo, telefone);
+		return Objects.hash(credenciais, dataCriacao, emailUsuario, id, nomeUsuario, senhaUsuario, statusAtivo,
+				telefone);
 	}
 
 	@Override
@@ -104,10 +127,10 @@ public class Usuario {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		return Objects.equals(dataCriacao, other.dataCriacao) && Objects.equals(emailUsuario, other.emailUsuario)
-				&& id == other.id && Objects.equals(nomeUsuario, other.nomeUsuario)
-				&& Objects.equals(senhaUsuario, other.senhaUsuario) && statusAtivo == other.statusAtivo
-				&& Objects.equals(telefone, other.telefone);
+		return Objects.equals(credenciais, other.credenciais) && Objects.equals(dataCriacao, other.dataCriacao)
+				&& Objects.equals(emailUsuario, other.emailUsuario) && Objects.equals(id, other.id)
+				&& Objects.equals(nomeUsuario, other.nomeUsuario) && Objects.equals(senhaUsuario, other.senhaUsuario)
+				&& statusAtivo == other.statusAtivo && Objects.equals(telefone, other.telefone);
 	}
 
 }
