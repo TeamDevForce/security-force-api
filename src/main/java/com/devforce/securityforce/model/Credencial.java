@@ -29,7 +29,7 @@ public class Credencial {
 
 	}
 
-	public Credencial(long id, String nome, String usuarioCredencial, String senhaUsuario, String notas, String url, Categoria categoria, Usuario usuario, LocalDate dataCriacao) {
+	public Credencial(Long id, String nome, String usuarioCredencial, String senhaUsuario, String notas, String url, Categoria categoria, Usuario usuario, LocalDate dataCriacao) {
 		this.id = id;
 		this.nome = nome;
 		this.usuarioCredencial = usuarioCredencial;
