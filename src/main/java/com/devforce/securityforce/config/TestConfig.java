@@ -1,4 +1,4 @@
-package com.devforce.securityforce.Config;
+package com.devforce.securityforce.config;
 
 import com.devforce.securityforce.model.Categoria;
 import com.devforce.securityforce.model.Credencial;
