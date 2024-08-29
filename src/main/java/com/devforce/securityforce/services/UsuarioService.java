@@ -4,7 +4,6 @@ import com.devforce.securityforce.model.Usuario;
 import com.devforce.securityforce.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service
