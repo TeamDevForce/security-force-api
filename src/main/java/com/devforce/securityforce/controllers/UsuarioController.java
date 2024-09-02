@@ -27,4 +27,10 @@ public class UsuarioController {
         usuarioService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping
+    public Usuario insert (@RequestBody Usuario usuario) {
+        return usuarioService.save(usuario);
+    }
+
 }
