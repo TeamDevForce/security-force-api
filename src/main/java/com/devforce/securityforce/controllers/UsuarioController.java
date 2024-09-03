@@ -29,8 +29,14 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public Usuario insert (@RequestBody Usuario usuario) {
+    public Usuario insert(@RequestBody Usuario usuario) {
         return usuarioService.save(usuario);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody Usuario usuarioAtualizado) {
+        Usuario usuario = usuarioService.update(id, usuarioAtualizado);
+        return ResponseEntity.ok().body(usuario);
     }
 
 }
