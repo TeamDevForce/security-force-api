@@ -13,7 +13,6 @@ public class CredencialController {
     @Autowired
     private CredencialService credencialService;
 
-
     @PostMapping
     public ResponseEntity<Credencial> create(@RequestBody Credencial credencial) {
         return null;
