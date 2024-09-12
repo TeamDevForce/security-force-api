@@ -1,7 +1,7 @@
 package com.devforce.securityforce.controllers;
 
 import com.devforce.securityforce.model.Credencial;
-import com.devforce.securityforce.services.exceptions.CredencialService;
+import com.devforce.securityforce.services.CredencialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

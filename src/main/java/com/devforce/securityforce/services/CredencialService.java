@@ -1,4 +1,4 @@
-package com.devforce.securityforce.services.exceptions;
+package com.devforce.securityforce.services;
 
 import com.devforce.securityforce.model.Credencial;
 import com.devforce.securityforce.repositories.CredencialRepository;
