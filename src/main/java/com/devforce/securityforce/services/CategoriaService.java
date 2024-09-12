@@ -28,6 +28,10 @@ public class CategoriaService {
         throw new RuntimeException("Categoria não encontrado");
     }
 
+    public Categoria save(Categoria categoria) {
+        return categoriaRepository.save(categoria);
+    }
+
     public void delete(Long id) {
         Optional<Categoria> categoriaOptional = categoriaRepository.findById(id);
         if (categoriaOptional.isPresent()) {
