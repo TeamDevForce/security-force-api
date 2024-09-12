@@ -38,8 +38,8 @@ public class TestConfig implements CommandLineRunner {
 
         Usuario usuario1 = new Usuario(null, "Carlos Silva", "carlos.silva@email.com", "senha123", "11987654321", LocalDate.now(), 'A', null);
         Usuario usuario2 = new Usuario(null, "Maria Souza", "maria.souza@email.com", "senha456", "11987654322", LocalDate.now(), 'A', null);
-
-        usuarioRepository.saveAll(List.of(usuario1, usuario2));
+        Usuario usuario3 = new Usuario(null, "Iago", "example@example", "1234", "458966556", LocalDate.now(), 'A', null);
+        usuarioRepository.saveAll(List.of(usuario1, usuario2, usuario3));
 
         // Criando Credenciais e associando com Categoria e Usuário
         Credencial credencial1 = new Credencial(null, "Facebook", "carlos123", "fbpassword", "Minha conta pessoal", "https://facebook.com", categoria1, usuario1, LocalDate.now());

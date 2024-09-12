@@ -1,5 +1,6 @@
 package com.devforce.securityforce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -19,6 +20,7 @@ public class Usuario {
 	private LocalDate dataCriacao;
 	private char statusAtivo;
 	@OneToMany(mappedBy = "usuario")
+	@JsonIgnore
 	private List<Credencial> credenciais;
 	
 	public Usuario() {
