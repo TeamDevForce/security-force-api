@@ -1,6 +1,6 @@
 
 
-package com.devforce.securityforce.controllers;
+package com.devforce.securityforce.controllers.exceptions;
 
 import com.devforce.securityforce.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;

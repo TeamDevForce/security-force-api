@@ -1,7 +1,8 @@
-package com.devforce.securityforce.services.exceptions;
+package com.devforce.securityforce.services;
 
 import com.devforce.securityforce.model.Categoria;
 import com.devforce.securityforce.repositories.CategoriaRepository;
+import com.devforce.securityforce.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

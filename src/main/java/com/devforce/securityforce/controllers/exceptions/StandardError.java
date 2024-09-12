@@ -1,4 +1,4 @@
-package com.devforce.securityforce.controllers;
+package com.devforce.securityforce.controllers.exceptions;
 
 import java.time.Instant;
 
