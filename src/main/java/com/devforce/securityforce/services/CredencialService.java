@@ -27,4 +27,29 @@ public class CredencialService {
         }
         throw new ResourceNotFoundException("Credencial não encontrada com o id: " + id);
     }
+
+    public Credencial uupdate(Long id,Credencial credencial) {
+        credencial.setId(id);
+        Credencial updateCredencial = findById(id);
+        return credencialRepository.save(updateCredencial);
+    }
+
+    public Credencial update(Long id, Credencial novaCredencial) {
+        Credencial credencialExistente = findById(id);
+        atualizarDadosCredencial(credencialExistente, novaCredencial);
+        return credencialRepository.save(credencialExistente);
+    }
+    
+    private void atualizarDadosCredencial(Credencial credencialExistente, Credencial novaCredencial) {
+        credencialExistente.setNome(novaCredencial.getNome());
+        credencialExistente.setUsuarioCredencial(novaCredencial.getUsuarioCredencial());
+        credencialExistente.setSenhaUsuario(novaCredencial.getSenhaUsuario());
+        credencialExistente.setNotas(novaCredencial.getNotas());
+        credencialExistente.setUrl(novaCredencial.getUrl());
+        credencialExistente.setCategoria(novaCredencial.getCategoria());
+        credencialExistente.setUsuario(novaCredencial.getUsuario());
+        credencialExistente.setDataCriacao(novaCredencial.getDataCriacao());
+    }
+
+
 }
