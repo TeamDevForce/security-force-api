@@ -14,8 +14,8 @@ public class CredencialController {
     private CredencialService credencialService;
 
     @PostMapping
-    public ResponseEntity<Credencial> create(@RequestBody Credencial credencial) {
-        return null;
+    public Credencial insert(@RequestBody Credencial credencial) {
+        return credencialService.save(credencial);
     }
 
     @GetMapping("/{id}")
@@ -30,7 +30,8 @@ public class CredencialController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        return null;
+        credencialService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

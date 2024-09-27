@@ -1,6 +1,7 @@
 package com.devforce.securityforce.services;
 
 import com.devforce.securityforce.model.Credencial;
+import com.devforce.securityforce.model.Usuario;
 import com.devforce.securityforce.repositories.CredencialRepository;
 import com.devforce.securityforce.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class CredencialService {
     @Autowired
     private CredencialRepository credencialRepository;
 
-    public Credencial create(Credencial credencial) {
+    public Credencial save(Credencial credencial) {
         credencial.setDataCriacao(LocalDate.now());
         return credencialRepository.save(credencial);
     }
@@ -51,5 +52,9 @@ public class CredencialService {
         credencialExistente.setDataCriacao(novaCredencial.getDataCriacao());
     }
 
+    public void delete(Long id) {
+        Credencial credencialEncontrada = findById(id);
+        credencialRepository.delete(credencialEncontrada);
+    }
 
 }
