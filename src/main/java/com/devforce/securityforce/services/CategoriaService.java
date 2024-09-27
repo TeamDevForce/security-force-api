@@ -32,6 +32,13 @@ public class CategoriaService {
         return categoriaRepository.save(categoria);
     }
 
+    public Categoria update(Long id, Categoria categoriaAtualizada) {
+        Categoria categoria = findById(id);
+        categoria.setNome(categoriaAtualizada.getNome());
+        categoria.setCredenciais(categoriaAtualizada.getCredenciais());
+        return categoriaRepository.save(categoria);
+    }
+
     public void delete(Long id) {
         Optional<Categoria> categoriaOptional = categoriaRepository.findById(id);
         if (categoriaOptional.isPresent()) {
